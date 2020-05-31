@@ -1,0 +1,48 @@
+<div class="container view bg-white create-content" xmlns:th="http://www.thymeleaf.org">
+    <div class="offset-md-2 col-md-8 pb-5 pt-2">
+        <h1 th:text="#{create.product}">Create New Product</h1>
+        <form th:object="${createProductBindingModel}" th:method="post" th:action="@{/products/create}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleFormControlInput1" th:text="#{create.product.product.name}">Product Name</label>
+                <input type="text" required class="form-control" th:field="*{name}" id="exampleFormControlInput1"
+                       th:placeholder="#{create.product.product.name}">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" th:text="#{create.product.product.img}">Image</label>
+                <input type="file"  multiple accept="image/*" required class="form-control" th:field="*{img}" id="exampleFormControlInput1"
+                       th:placeholder="#{create.product.product.img}">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1" th:text="#{create.product.product.description}">Product Description</label>
+                <textarea class="form-control" th:field="*{description}" id="exampleFormControlTextarea1"
+                          th:placeholder="#{create.product.product.description}" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" th:text="#{brands}"></label>
+                <input type="text" required class="form-control" th:field="*{brand}" id="exampleFormControlInput1"
+                       th:placeholder="#{brands}">
+            </div>
+            <div class="form-group">
+                <span th:text="#{products.categories}">Product categories:</span>
+                <select class="custom-select mb-2" size="3" multiple th:field="*{categories}">
+                    <th:block th:each="categories : ${viewModel}">
+                        <option th:value="${categories.id}" th:text="${categories.name}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <label for="priceForProduct" th:text="#{create.product.price}">Price:</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input id="priceForProduct" required th:field="*{price}" type="number" step="0.01" class="form-control"
+                       aria-label="Amount (to the nearest dollar)">
+            </div>
+            <hr>
+
+            <button type="submit" class="btn bg-light-green btn-info" th:text="#{create.product.create.button}">Create</button>
+        </form>
+    </div>
+</div>

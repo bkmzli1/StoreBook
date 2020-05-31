@@ -1,0 +1,26 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+    <div class="row">
+
+        <div style="text-align: center;" class="container mt-5">
+            <div th:each="el : ${viewModel.news}" class="alert alert-info mt-2">
+                <h5 th:href="@{/news/{id}(id=${el.id})}" class="pt-1" th:text="${el.createdAt}"></h5>
+
+                <a th:href="@{/news/{id}(id=${el.id})}" >
+                    <img style="text-align: center;" th:src="${el.img}"  class="w-75">
+                </a>
+                <h5 th:href="@{/news/{id}(id=${el.id})}" class="pt-1" th:text="${el.name}"></h5>
+                <style>
+                    .word {
+                        padding: 10px;
+                        font-size: 18px;
+                        word-break: break-all;
+                    }
+                </style>
+                <p style="text-align: left;"  th:href="@{/news/{id}(id=${el.id})}" class="pt-1 word" th:text="${el.descriptionSize}"></p>
+                <a  th:href="@{/news/{id}(id=${el.id})}" width="486" class="btn btn-primary btn-lg btn-block" role="button">View</a>
+            </div>
+
+        </div>
+
+    </div>
+</div>

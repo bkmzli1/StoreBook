@@ -1,0 +1,27 @@
+<div class="container view bg-white create-content" xmlns:th="http://www.thymeleaf.org">
+    <div class="offset-md-2 col-md-8 pb-5 pt-2">
+        <h1 th:text="#{nav.create.news}">Create New News</h1>
+        <form th:object="${createNewsBindingModel}" th:method="post" th:action="@{/news/create}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleFormControlInput1" th:text="#{create.product.product.name}">News Name</label>
+                <input type="text" required class="form-control" th:field="*{name}" id="exampleFormControlInput1"
+                       th:placeholder="#{create.product.product.name}">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1" th:text="#{create.product.product.img}">Image</label>
+                <input type="file"  multiple accept="image/*" required class="form-control" th:field="*{img}" id="exampleFormControlInput1"
+                       th:placeholder="#{create.product.product.img}">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1" th:text="#{create.product.product.description}">News Description</label>
+                <textarea class="form-control" th:field="*{description}" id="exampleFormControlTextarea1"
+                          th:placeholder="#{create.product.product.description}" rows="5"></textarea>
+            </div>
+            <hr>
+
+            <button type="submit" class="btn bg-light-green btn-info" th:text="#{create.product.create.button}">Create</button>
+        </form>
+    </div>
+</div>
