@@ -19,6 +19,7 @@
   2. :white_check_mark: Модуль «Обратная связь»  
   3. :black_square_button: Модуль  «Список дел»     
   4. :white_check_mark: Модуль  «Регистрация/авторизация»    
+  4. :white_check_mark: Модуль  «Галерея»    
   6. :black_square_button: Система  управления содержимым сайта          
 
 [:arrow_up:Оглавление](#Оглавление)
