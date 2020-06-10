@@ -91,7 +91,9 @@ public class ProductController extends BaseController {
             categoryServiceModels.add(categoryServiceModel);
         }
         productServiceModel.setCategories(categoryServiceModels);
+
         productService.create(productServiceModel);
+
         this.validationRedirectCache.clear();
         return super.redirect("/products");
     }

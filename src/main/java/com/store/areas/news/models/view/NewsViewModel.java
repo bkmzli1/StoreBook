@@ -2,6 +2,7 @@ package com.store.areas.news.models.view;
 
 import com.store.areas.product.models.service.ProductServiceModel;
 import com.store.areas.product.models.view.ProductViewModel;
+import com.store.areas.user.models.service.UserServiceModel;
 
 import javax.persistence.Column;
 import java.time.LocalDateTime;
@@ -12,10 +13,11 @@ public class NewsViewModel {
 	private String id;
 
 	private String img;
+
 	private String description;
 	private String descriptionSize;
 	private LocalDateTime createdAt;
-
+	private UserServiceModel user;
 	public NewsViewModel() {
 	}
 
@@ -93,5 +95,13 @@ public class NewsViewModel {
 
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public UserServiceModel getUser() {
+		return user;
+	}
+
+	public void setUser(UserServiceModel user) {
+		this.user = user;
 	}
 }

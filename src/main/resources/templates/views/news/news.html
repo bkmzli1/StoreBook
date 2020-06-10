@@ -1,15 +1,22 @@
 <div xmlns:th="http://www.thymeleaf.org">
-        <div style="text-align: center;" >
-            <div th:each="el : ${viewModel.news}" class="alert mt-2">
-                <a th:href="@{/news/{name}(name=${el.name})}" >
-                    <img style="text-align: center;"  th:src="${el.img}"  class="w-75">
-                </a>
-                <h1 th:href="@{/el.name}"  class="pt-1" th:text="${el.name}"></h1>
-                <div align="justify"  th:each="el2 : ${el.description}" >
-                    <p th:text="${el2}"></p>
-                </div>
+    <div style="text-align: center;">
+        <div th:each="el : ${viewModel.news}" class="alert mt-2">
+            <style>
+                .word {
+                    width: 30ch;
+                    height: auto;
+                    object-fit: cover;
+                }
+            </style>
+            <a th:href="@{{name}(name=${el.img})}">
+                <img style="text-align: center;" th:src="${el.img}" class="word">
+            </a>
+            <h1 th:href="@{/el.name}" class="pt-1" th:text="${el.name}"></h1>
+            <div align="justify" th:each="el2 : ${el.description}">
+                <p th:text="${el2}"></p>
             </div>
         </div>
+    </div>
 
 
 </div>

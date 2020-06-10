@@ -2,6 +2,8 @@ package com.store.areas.product.models.binding;
 
 import com.store.constants.Constants;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
@@ -21,6 +23,7 @@ public class CreateProductBindingModel {
 
 	private String name;
 	private String img;
+	private String imgs;
 
 	private String description;
 
@@ -67,7 +70,41 @@ public class CreateProductBindingModel {
 
 
 	}
+	public String getImgs() {
+		return imgs;
+	}
+	@RequestMapping(value = "/products/create", method = RequestMethod.POST)
+	public void setImgs(MultipartFile[] imgs) {
+		String sImgs = "";
 
+		for (MultipartFile img :
+				imgs) {
+			if (img != null) {
+				File uploadPDir = new File("/home/bkmz/book2/");
+				if (!uploadPDir.exists()) {
+					uploadPDir.mkdir();
+				}
+				String uuidFile = UUID.randomUUID().toString();
+				String resultFilename = uuidFile + "." + img.getOriginalFilename();
+				System.out.println(uploadPDir+ "/" + resultFilename);
+				try {
+					img.transferTo(new File("/home/bkmz/book2/" + "/" + resultFilename));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				sImgs += "/img/"+resultFilename +"&&&";
+
+
+			}
+		}
+		//System.out.println(sImgs);
+
+
+		this.imgs = sImgs;
+
+
+
+	}
 	public String getDescription() {
 		return description;
 	}

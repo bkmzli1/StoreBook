@@ -9,6 +9,7 @@ import java.util.Set;
 public class ProductViewModel {
     private String name;
     private String img;
+    private String imgs;
 
     private String description;
 
@@ -32,6 +33,15 @@ public class ProductViewModel {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String[] getImgs() {
+        String[] imgs = this.imgs.split("&&&");
+        return imgs;
+    }
+
+    public void setImgs(String imgs) {
+        this.imgs = imgs;
     }
 
     public String getDescription() {

@@ -15,6 +15,8 @@ public class ProductServiceModel {
 
     private String img;
 
+    private String imgs;
+
     private String description;
 
     private BigDecimal price;
@@ -49,6 +51,14 @@ public class ProductServiceModel {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getImgs() {
+        return imgs;
+    }
+
+    public void setImgs(String imgs) {
+        this.imgs = imgs;
     }
 
     public String getDescription() {

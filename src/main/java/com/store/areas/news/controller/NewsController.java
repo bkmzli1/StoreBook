@@ -9,9 +9,11 @@ import com.store.areas.news.models.view.NewsViewModel;
 import com.store.areas.news.services.NewsService;
 import com.store.areas.product.models.view.ProductViewModel;
 import com.store.areas.sale.services.SaleService;
+import com.store.areas.user.models.service.UserServiceModel;
 import com.store.areas.user.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -75,12 +77,15 @@ public class NewsController extends BaseController {
 	}
 
 	@GetMapping("/create")
-	public ModelAndView create(@ModelAttribute CreateNewsBindingModel createNewsBindingModel) {
+	public ModelAndView create(@ModelAttribute CreateNewsBindingModel createNewsBindingModel, Authentication authentication) {
+		UserServiceModel userServiceModel = this.userService.findByUsername(authentication.getName());
+
 		List<NewsViewModel> categoryViewModels = new ArrayList<>();
 		this.newsService.findAll().forEach(categoryServiceModel -> {
 			NewsViewModel categoryViewModel =
 					this.modelMapper.map(categoryServiceModel, NewsViewModel.class);
 			categoryViewModels.add(categoryViewModel);
+			categoryViewModel.setUser(userServiceModel);
 		});
 		this.validationRedirectCache = categoryViewModels;
 		return super.view("views/news/create", categoryViewModels);
