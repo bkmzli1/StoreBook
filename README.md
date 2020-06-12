@@ -37,7 +37,7 @@
    spring.datasource.username=(имя пользователя)
    spring.datasource.password=(пароль пользователя)
    ...
-   upload.path=(полный путь папки)
+   upload.path=(полный путь к папке для сохранения изоброжений)
    #при необходимости меням порт в
    server.port=(прот)
    ```
