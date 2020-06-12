@@ -42,5 +42,6 @@
    server.port=(прот)
    ```
 
-3. Стартовый файл **StoreApplication** находится по следующему адресу **src/main/java/com/store**
-[:arrow_up:Оглавление](#Оглавление)
+3. Стартовый файл **StoreApplication** находится по следующему адресу **src/main/java/com/store**     
+
+  [:arrow_up:Оглавление](#Оглавление)
